@@ -1,6 +1,8 @@
 # Comment Management System Technical Challenge
 # Author: Apoorva Kaushik
 
+import unittest
+
 class Comment:
     def __init__(self, text, likes, dislikes, is_flagged):
         self.text = text
@@ -19,8 +21,9 @@ class Question(Comment):
         super().__init__(text, likes, dislikes, is_flagged) # inherit methods and properties from parent class
 
     def print_info(self):
-        print("Comment: {}".format(self.text))
-        print("Likes: {}, Dislikes: {}, Is Flagged: {}".format(self.likes, self.dislikes, self.is_flagged))
+        # print("Comment: {}".format(self.text))
+        # print("Likes: {}, Dislikes: {}, Is Flagged: {}".format(self.likes, self.dislikes, self.is_flagged))
+        super().print_info() # call parent class method
         print("Topic: {}".format(self.topic))
         print("Answer: {}".format(self.answer))
 
@@ -36,6 +39,9 @@ def print_unflaged(comments):
             print()
 
 def average_engagement(comments):
+    if len(comments) == 0:
+        return 0
+    
     total_engagement = 0
     for comment in comments:
         total_engagement += comment.likes + comment.dislikes
@@ -59,9 +65,25 @@ def main():
     
     print("AVERAGE ENGAGEMENT:", average_engagement(comments), "likes and dislikes per comment")
 
-main()
 
+class TestAverageEngagement(unittest.TestCase):
+    def test_empty(self):
+        self.assertEqual(average_engagement([]), 0)
 
+    def test_sample(self):
+        comments = []
+        comments.append(Comment("pineapple on pizza", 10, 10, True))
+        comments.append(Comment("I liked this video", 30, 20, False))
+        comments.append(Comment("LOL", 4, 1, False))
+
+        comments.append(Question("Should I dislike Shrek?", 1, 15, True, "No you shouldn't", "Blasphemy"))
+        comments.append(Question("Why did the programmer quit their job?", 12, 12, False, "They didn't get arrays", "Coding"))
+
+        self.assertEqual(average_engagement(comments), 23.0)
+
+if __name__ == "__main__":
+    main()
+    unittest.main()
 
 
 
