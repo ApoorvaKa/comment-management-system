@@ -1,5 +1,5 @@
-# Comment Management System Technical Challenge
-# Author: Apoorva Kaushik
+# Comment Management System Technical Challenge for Grand Circus
+# Author: Apoorva Kaushiks
 
 import unittest
 

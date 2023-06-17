@@ -13,7 +13,7 @@ The `Comment` class represents a basic comment and has the following attributes:
 - `dislikes`: The number of dislikes the comment has received.
 - `is_flagged`: A boolean value indicating whether the comment has been flagged.
 
-The class provides a method `print_info()` to print the comment's information.
+The class provides a method `print_info()` to print the comment's information. *(This could be written as __str__ instead to use the built in print function.)*
 
 ### Question
 
@@ -22,7 +22,7 @@ The `Question` class inherits from the `Comment` class and adds two additional a
 - `answer`: The answer to the question.
 - `topic`: The topic of the question.
 
-The class overrides the `print_info()` method to include the question's answer and topic in the printed information.
+The class overrides the `print_info()` method to include the question's answer and topic in the printed information. *(This could be written as __str__ instead to use the built in print function.)*
 
 ## Functions
 
